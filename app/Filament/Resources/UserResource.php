@@ -15,15 +15,12 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class UserResource extends Resource
 {
-
     protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-user'; // https://heroicons.com/ Para cambiar el icono
 
     protected static ?string $navigationLabel = 'Usuarios'; // Cambiar el nombre de la sección
 
-    protected static ?string $navigationGroup = 'Ver y Registrar Usuarios'; // Cambiar el nombre del grupo
-    
     protected static ?string $modelLabel = 'Usuarios'; // Cambiar el nombre del modelo
 
     protected static $roles = [
@@ -69,8 +66,10 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label('Nombre')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
+                    ->label('Correo electrónico')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -81,7 +80,8 @@ class UserResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('rol')
-                ->formatStateUsing(fn (string $state): string => static::$roles[$state])
+                    ->label('Rol')
+                    ->formatStateUsing(fn (string $state): string => static::$roles[$state])
                     ->sortable(),
             ])
             ->filters([

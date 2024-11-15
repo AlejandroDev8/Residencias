@@ -19,8 +19,6 @@ class CareerResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
 
-    protected static ?string $navigationGroup = 'Gestión de Carreras';
-
     protected static ?string $navigationLabel = 'Carreras';
 
     protected static ?string $modelLabel = 'Carrera';
