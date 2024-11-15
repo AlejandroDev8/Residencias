@@ -25,14 +25,18 @@ class CareerResource extends Resource
 
     protected static ?string $modelLabel = 'Carrera';
 
+    protected static ?int $navigationSort = 1;
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('nombre')
+                    ->label('Nombre de la Carrera')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('siglas')
+                    ->label('Siglas de la Carrera')
                     ->required()
                     ->maxLength(255),
             ]);
